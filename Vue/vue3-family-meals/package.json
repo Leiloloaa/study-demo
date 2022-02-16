@@ -1,0 +1,23 @@
+{
+    "name": "vuejs",
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview"
+    },
+    "dependencies": {
+        "element3": "0.0.40",
+        "vue": "^3.2.16",
+        "vue-router": "^4.0.12",
+        "vuex": "^4.0.2"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^1.9.3",
+        "@vitejs/plugin-vue-jsx": "^1.2.0",
+        "axios": "^0.24.0",
+        "nprogress": "^0.2.0",
+        "sass": "^1.43.4",
+        "vite": "^2.6.4"
+    }
+}
