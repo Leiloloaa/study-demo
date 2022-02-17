@@ -14,3 +14,5 @@
     - [x] Vue3 全家桶 - 大圣
   - [x] vue3-setup
     - [x] 20220216
+- [x] Vuex
+  - [x] xxx
