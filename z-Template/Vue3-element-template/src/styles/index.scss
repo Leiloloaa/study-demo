@@ -1,0 +1,8 @@
+@charset "UTF-8";
+// 变量
+@import "./common/variables.scss";
+// 公共
+@import "./common/element-ui.scss";
+@import "./common/reset.scss";
+// 页面
+@import "./pages/login.scss";

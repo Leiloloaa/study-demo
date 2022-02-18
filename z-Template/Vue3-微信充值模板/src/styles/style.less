@@ -1,0 +1,88 @@
+@import './varuables.less';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: @backgroundColor;
+}
+
+.tip {
+  margin-left: 15px;
+  font-size: 14.5px;
+  color: #969795;
+}
+
+.myBtn {
+  width: 80vw;
+  height: 45px;
+  margin: 4vh 10vw;
+  font-size: 15.5px;
+  border-radius: 18px
+}
+
+.myLitterBtn {
+  border-radius: 15px;
+  padding: 0px 15px;
+}
+
+// vant 样式
+
+.van-cell__changeLable {
+  font-size: 15.5px;
+}
+
+.van-field__control {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  color: #646566;
+  line-height: inherit;
+  text-align: left;
+  background-color: transparent;
+  border: 0;
+  resize: none;
+  font-size: 15.5px;
+}
+
+.van-cell__changeValue {
+  position: relative;
+  overflow: hidden;
+  color: #f40;
+  text-align: right;
+  vertical-align: middle;
+  word-wrap: break-word;
+  font-size: 16px;
+}
+
+.van-icon-warning-o::before {
+  content: '\F0DF';
+  font-size: 18px;
+}
+
+.van-icon-clear::before {
+  content: '\F031';
+  font-size: 18px;
+}
+
+.van-notify {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.21333rem 0.42667rem;
+  color: #fff;
+  font-size: 0.37333rem;
+  height: 1.22667rem;
+  white-space: pre-wrap;
+  text-align: center;
+  word-wrap: break-word;
+}
