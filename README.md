@@ -12,3 +12,5 @@
 - [x] Vuex
 - [x] React
   - [x] mini-react
+- [ ] JavaScript
+  - [ ] 原生 DOM **拖拽、回弹与吸附功能**
