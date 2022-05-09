@@ -1,0 +1,189 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Stone
+ * @Date: 2022-04-07 11:51:05
+ * @LastEditors: Stone
+ * @LastEditTime: 2022-04-11 15:20:33
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.0.0.min.js"></script>
+    <style>
+        .bullet-box {
+            position: relative;
+            width: 80%;
+            height: 200px;
+            border: 1px solid red;
+            overflow-x: hidden;
+        }
+        
+        .dan {
+            position: absolute;
+            left: 100%;
+            height: 20px;
+            line-height: 20px;
+            background: #333;
+            white-space: nowrap;
+            padding: 5px 14px;
+            border-radius: 50px;
+            color: #fff;
+            letter-spacing: 2px;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: default;
+            /* top: 80px; */
+            animation: danmu 6s linear 0s infinite;
+        }
+        
+        @-webkit-keyframes danmu {
+            from {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            to {
+                -webkit-transform: translateX(calc(-100vw - 100%));
+                transform: translateX(calc(-100vw - 100%));
+            }
+        }
+        
+        @keyframes danmu {
+            from {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            to {
+                -webkit-transform: translateX(calc(-100vw - 100%));
+                transform: translateX(calc(-100vw - 100%));
+            }
+        }
+        
+        .content {
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            padding: 5px;
+            border-radius: 15px;
+            background: red;
+            border-image: -webkit-linear-gradient(top, red 0%, blue 30%, yellow 60%, green 90%);
+            border-image: -moz-linear-gradient(top, red 0%, blue 30%, yellow 60%, green 90%);
+            border-image: linear-gradient(top, red 0%, blue 30%, yellow 60%, green 90%);
+        }
+        
+        .box {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="box"></div>
+    </div>
+    <div class='bullet-box'>
+        <!-- <div class='dan'></div> -->
+    </div>
+    <script>
+        // 用了jquery，记得引入
+        var timers = [],
+            bulletChat = ['刀妹-艾欧尼亚昂扬不灭', '剑圣开大跑的很快', '赛娜', '卢锡安的被动可以多A一发'], // 弹幕数组
+            bulletChatTime = 0;
+
+        // 延时函数
+        function sleep(interval) {
+            return new Promise((resolve) => {
+                let timer = setTimeout(resolve, interval)
+                timers.push(timer)
+            });
+        }
+        // 开启弹幕
+        function bulletChatStart(i = 1) {
+            bulletChat.forEach(async(item, index) => {
+                // 动画时间随机范围，单位s
+                let numMax = 10,
+                    numMin = 3;
+                // 两条弹幕之间时间间隔随机范围，单位100ms
+                let bulletChatMax = 20,
+                    bulletChatMin = 5;
+                // 动画时间
+                let num = Math.floor(Math.random() * (numMax - numMin + 1) + numMin)
+                    // 距离顶部高度百分比
+                    // let top = Math.floor(Math.random() * (35 - 2 + 1) + 2)
+                let top
+                console.log(index % 4);
+                if (index % 4 == 0) {
+                    top = 30
+                }
+                if (index % 4 == 1) {
+                    top = 70
+                }
+                if (index % 4 == 2) {
+                    top = 110
+                }
+                if (index % 4 == 3) {
+                    top = 150
+                }
+                console.log(top);
+                if (index !== 0) {
+                    bulletChatTime += Math.floor(Math.random() * (bulletChatMax - bulletChatMin + 1) + bulletChatMin)
+                }
+                await sleep(100 * bulletChatTime)
+                $('.bullet-box').append(`<div class="dan dan-${index + i}" style="animation: danmu ${num}s linear 0s infinite;top: ${top}px;">${item}</div>`)
+                await sleep(1000 * num)
+                $('.dan-' + (index + i)).remove();
+                if (index === bulletChat.length - 1) {
+                    bulletChatTime = 0;
+                    bulletChatStart(index + i + 2);
+                }
+            });
+        }
+        // 关闭弹幕 主要是用于离开弹幕页时清空定时器等 防止污染及性能占用
+        function bulletChatStop() {
+            timers.forEach(timer => {
+                clearTimeout(timer)
+            });
+            timers = [];
+            bulletChatTime = 0;
+            $('.dan').remove();
+        }
+        // 调用开启弹幕方法
+        bulletChatStart()
+
+        let showLight = light => {
+            console.log(`now is ${light}`);
+        }
+
+        let scheduling = (light, delay) => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    showLight(light)
+                    resolve()
+                }, delay)
+            })
+        }
+
+        let turnRed = () => scheduling('red', 1000)
+        let turnYellow = () => scheduling('yellow', 2000)
+        let turnGreen = () => scheduling('green', 3000)
+
+        let start = async() => {
+                await turnRed()
+                await turnYellow()
+                await turnGreen()
+                start()
+            }
+            // start()
+    </script>
+</body>
+
+</html>
+
+</html>
