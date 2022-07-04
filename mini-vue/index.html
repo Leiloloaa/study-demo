@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>mini-vue2 响应式实现</h1>
+      <span>姓名 {{name}}</span>
+      <input type="text" v-model="name" />
+      <span>年龄 {{other.age}}</span>
+      <input type="number" v-model="other.age" />
+      <span>test {{other.test.aaa}}</span>
+      <input type="number" v-model="other.test.aaa" />
+    </div>
+    <script src="./Vue.js"></script>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "zs",
+          other: {
+            age: 18,
+            gender: 1,
+            test: {
+              aaa: 1,
+            },
+          },
+        },
+      });
+
+      console.log(vm);
+    </script>
+  </body>
+</html>
