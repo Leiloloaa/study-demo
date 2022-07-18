@@ -10,40 +10,38 @@
     <div id="app">
       <h1>mini-vue2 和 mini-vue3 响应式实现</h1>
       <span>姓名 {{name}}</span>
-      <input type="text" v-model="name" />
+      <input type="text" v-model="name" name="input1" />
       <span>年龄 {{other.age}}</span>
-      <input type="number" v-model="other.age" />
-      <span>test {{other.test.aaa}}</span>
-      <input type="number" v-model="other.test.aaa" />
+      <input type="number" v-model="other.age" name="input2"/>
+      <span>更深层 test {{other.test.aaa}}</span>
+      <input type="number" v-model="other.test.aaa" name="input3"/>
     </div>
-    <!-- <script src="./reactivity.ts"></script> -->
-    <script type="module">
-      import { createApp } from "./reactivity.js";
-      console.log(createApp);
+    <script src="./Vue.js"></script>
+    <script>
+      // import { createApp } from "./reactivity.js";
+      // console.log(createApp);
       // Vue2 是单例模式
-      // const vm = new Vue({
-      //   el: "#app",
-      //   data: {
-      //     name: "zs",
-      //     other: {
-      //       age: 18,
-      //       gender: 1,
-      //       test: {
-      //         aaa: 1,
-      //       },
-      //     },
-      //   },
-      // });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "zs",
+          other: {
+            age: 18,
+            gender: 1,
+            test: {
+              aaa: 1,
+            },
+          },
+        },
+      });
 
       // Vue3 则是 monorepo 的方式管理包
-      const App = {
-        setup() {
-          return {
-          };
-        },
-      };
-
-      const vm = createApp(App).mount("app");
+      // const App = {
+      //   setup() {
+      //     return {};
+      //   },
+      // };
+      // const vm = createApp(App).mount("app");
 
       console.log(vm);
     </script>
