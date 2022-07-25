@@ -5,7 +5,7 @@ class Vue {
   constructor(obj_instance) {
     this.$data = obj_instance.data;
     Observer(this.$data);
-    Compile(obj_instance.el, this);
+    // Compile(obj_instance.el, this);
   }
 }
 // 双向数据绑定
@@ -168,6 +168,7 @@ class Watcher {
     // 需要想办法把订阅者实例保存到 Dependency 实例中
     // 临时属性 - 触发 getter 把订阅者实例临时的赋值给这个临时变量
     // 根据作用域的功能就能最大限度的访问这个属性
+    // 在类上添加一个临时属性 因为 watch 的时候不会触发 get 就会收集不到 需要通知的订阅者
     Dependency.tempWatcher = this;
     // console.log(`用属性 ${key} 创建订阅者`);
     // 为所有的订阅者 都需要触发其 getter 操作

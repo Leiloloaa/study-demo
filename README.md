@@ -3,6 +3,9 @@
 > 学习过程中产出
 
 - [x] Pinia
+- [x] mini-vue
+  - [x] vue2 实现响应式及简单实现模板解析
+  - [x] vue3 实现响应式
 - [x] Vue
   - [x] vue2-mixin
   - [x] vue3-cdn
